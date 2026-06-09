@@ -264,17 +264,18 @@ function Index() {
       </div>
 
       {/* HERO */}
-      <section id="top" className="relative min-h-[100svh] flex items-end overflow-hidden">
+      <section id="top" className="relative isolate min-h-[100svh] flex items-end overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-0">
           <img
             src={heroAsset.url}
             alt="Кирилл Чебруков — гештальт-психолог"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/90" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/75 via-background/25 to-transparent" />
         </div>
+
 
         <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-40 pb-16 lg:pb-24">
           <div className="max-w-3xl">
