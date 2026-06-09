@@ -588,7 +588,7 @@ function Index() {
       </section>
 
       {/* CONTACT */}
-      <SectionHeading roman="VI" kicker="Записаться" dark />
+      <SectionHeading roman="VII" kicker="Записаться" dark />
       <section id="contact" className="bg-primary text-primary-foreground pb-28 md:pb-36">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
