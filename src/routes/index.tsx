@@ -102,6 +102,7 @@ const nav = [
   { href: "#about", label: "О подходе" },
   { href: "#topics", label: "Запросы" },
   { href: "#how", label: "Встречи" },
+  { href: "#quiz", label: "Тест · −20%" },
   { href: "#price", label: "Стоимость" },
   { href: "#faq", label: "Вопросы" },
 ];
