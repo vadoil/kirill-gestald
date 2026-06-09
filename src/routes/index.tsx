@@ -687,8 +687,8 @@ function Index() {
             </div>
           </div>
           <div className="md:col-span-3 text-sm space-y-1 text-muted-foreground">
-            <div>Telegram · WhatsApp</div>
-            <div>+7 (000) 000-00-00</div>
+            <div>Телефон · MAX</div>
+            <div><a href="tel:+79608350945" className="hover:text-foreground">+7 960 835-09-45</a></div>
             <div>Тольятти</div>
           </div>
           <p className="md:col-span-4 text-sm text-muted-foreground md:text-right max-w-xs md:ml-auto leading-relaxed">
