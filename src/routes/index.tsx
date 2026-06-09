@@ -14,7 +14,7 @@ import { Toaster } from "@/components/ui/sonner";
 import {
   MapPin,
   Lock,
-  Send: _Send,
+  
   Phone,
   MessageCircle,
   Clock,
