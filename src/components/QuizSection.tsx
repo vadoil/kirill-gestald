@@ -121,7 +121,7 @@ export function QuizSection() {
   const [sent, setSent] = useState(false);
 
   const total = QUESTIONS.length;
-  const isIntro = step === 0;
+  const isIntro = false;
   const isResult = step > total;
   const qIndex = step - 1;
 
