@@ -185,7 +185,7 @@ export function QuizSection() {
             />
           </div>
 
-          <div className="p-8 md:p-14 min-h-[420px] flex flex-col">
+          <div className="p-6 md:p-10 flex flex-col">
             {isIntro && (
               <div className="max-w-2xl m-auto text-center">
                 <div className="font-display text-3xl md:text-4xl leading-tight mb-6">
