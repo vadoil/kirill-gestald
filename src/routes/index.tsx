@@ -25,40 +25,75 @@ import {
 import heroAsset from "../assets/kirill-hero.png.asset.json";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Кирилл Чебруков — гештальт-психолог в Тольятти" },
-      {
-        name: "description",
-        content:
-          "Частный гештальт-психолог в Тольятти. Очные и онлайн-консультации: тревога, выгорание, отношения, поиск опоры. Бережно и конфиденциально.",
-      },
-      { property: "og:title", content: "Кирилл Чебруков — гештальт-психолог в Тольятти" },
-      {
-        property: "og:description",
-        content:
-          "Частная практика. Очные встречи в Тольятти и онлайн в бережном гештальт-подходе.",
-      },
-      { property: "og:image", content: heroAsset.url },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          name: "Кирилл Чебруков — гештальт-психолог",
-          description:
-            "Частная практика гештальт-психолога в Тольятти. Очные и онлайн-консультации.",
-          areaServed: "Тольятти",
-          address: { "@type": "PostalAddress", addressLocality: "Тольятти", addressCountry: "RU" },
-          image: heroAsset.url,
-        }),
-      },
-    ],
-  }),
+  head: () => {
+    const SITE = "https://gestalt-kindred-space.lovable.app";
+    const ogImage = `${SITE}${heroAsset.url}`;
+    return {
+      meta: [
+        { title: "Кирилл Чебруков — гештальт-психолог в Тольятти | Очно и онлайн" },
+        {
+          name: "description",
+          content:
+            "Частный гештальт-психолог в Тольятти Кирилл Чебруков. Бережные консультации очно и онлайн: тревога, выгорание, отношения, поиск опоры. Запишитесь на первую встречу.",
+        },
+        { name: "keywords", content: "гештальт-психолог Тольятти, психолог Тольятти, психотерапия онлайн, тревога, выгорание, гештальт-терапия" },
+        { property: "og:title", content: "Кирилл Чебруков — гештальт-психолог в Тольятти" },
+        {
+          property: "og:description",
+          content:
+            "Частная практика. Очные встречи в Тольятти и онлайн в бережном гештальт-подходе.",
+        },
+        { property: "og:image", content: ogImage },
+        { property: "og:image:alt", content: "Кирилл Чебруков — гештальт-психолог" },
+        { property: "og:url", content: `${SITE}/` },
+        { property: "og:type", content: "website" },
+        { name: "twitter:title", content: "Кирилл Чебруков — гештальт-психолог в Тольятти" },
+        { name: "twitter:description", content: "Очные и онлайн-консультации в бережном гештальт-подходе." },
+        { name: "twitter:image", content: ogImage },
+      ],
+      links: [{ rel: "canonical", href: `${SITE}/` }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: "Кирилл Чебруков — гештальт-психолог",
+            description:
+              "Частная практика гештальт-психолога в Тольятти. Очные и онлайн-консультации.",
+            url: `${SITE}/`,
+            image: ogImage,
+            priceRange: "3000–3500 ₽",
+            areaServed: "Тольятти",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Тольятти",
+              addressRegion: "Самарская область",
+              addressCountry: "RU",
+            },
+            provider: {
+              "@type": "Person",
+              name: "Кирилл Чебруков",
+              jobTitle: "Гештальт-психолог",
+            },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        },
+      ],
+    };
+  },
+
   component: Index,
 });
 

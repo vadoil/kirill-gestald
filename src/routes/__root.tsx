@@ -77,29 +77,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Кирилл Чебруков — гештальт-психолог в Тольятти" },
-      {
-        name: "description",
-        content:
-          "Кирилл Чебруков — частный гештальт-психолог в Тольятти. Очные и онлайн-консультации: тревога, выгорание, отношения, поиск опоры. Бережно и конфиденциально.",
-      },
+      { name: "theme-color", content: "#b08858" },
       { name: "author", content: "Кирилл Чебруков" },
-      { property: "og:title", content: "Кирилл Чебруков — гештальт-психолог в Тольятти" },
-      {
-        property: "og:description",
-        content:
-          "Частная практика. Очные встречи в Тольятти и онлайн-консультации в бережном гештальт-подходе.",
-      },
+      { property: "og:site_name", content: "Кирилл Чебруков · Гештальт-психолог" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "ru_RU" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Кирилл Чебруков — гештальт-психолог",
+          url: "https://gestalt-kindred-space.lovable.app",
+          inLanguage: "ru-RU",
+        }),
       },
     ],
   }),
@@ -109,14 +115,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <head>
         <HeadContent />
       </head>
       <body>
         {children}
+        <Scripts />
+      </body>
+    </html>
+
         <Scripts />
       </body>
     </html>
