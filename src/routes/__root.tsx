@@ -77,19 +77,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Кирилл Чебруков — гештальт-психолог в Тольятти" },
+      {
+        name: "description",
+        content:
+          "Кирилл Чебруков — частный гештальт-психолог в Тольятти. Очные и онлайн-консультации: тревога, выгорание, отношения, поиск опоры. Бережно и конфиденциально.",
+      },
+      { name: "author", content: "Кирилл Чебруков" },
+      { property: "og:title", content: "Кирилл Чебруков — гештальт-психолог в Тольятти" },
+      {
+        property: "og:description",
+        content:
+          "Частная практика. Очные встречи в Тольятти и онлайн-консультации в бережном гештальт-подходе.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap",
       },
     ],
   }),
