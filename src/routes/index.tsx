@@ -406,20 +406,36 @@ function Index() {
             </p>
           </div>
 
-          <ul className="border-t border-border">
-            {topics.map((t, i) => (
-              <li
-                key={t}
-                className="group border-b border-border flex items-center gap-6 md:gap-10 py-5 md:py-7 hover:bg-secondary/40 transition-colors px-2"
-              >
-                <span className="font-display text-sm text-accent tabular-nums w-10">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="font-display text-xl md:text-3xl flex-1">{t}</span>
-                <ArrowUpRight className="size-5 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-              </li>
+          <div className="grid md:grid-cols-3 gap-px bg-border border border-border rounded-sm overflow-hidden">
+            {topicGroups.map((g, gi) => (
+              <div key={g.title} className="bg-background p-8 md:p-10 flex flex-col">
+                <div className="flex items-baseline justify-between mb-6">
+                  <span className="font-display text-4xl md:text-5xl text-accent">
+                    {String(gi + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                    направление
+                  </span>
+                </div>
+                <h3 className="font-display text-2xl md:text-3xl mb-3">{g.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+                  {g.desc}
+                </p>
+                <ul className="mt-auto space-y-px border-t border-border">
+                  {g.items.map((t) => (
+                    <li
+                      key={t}
+                      className="flex items-center gap-3 py-3 border-b border-border text-[15px] text-foreground/85"
+                    >
+                      <span className="h-1 w-1 rounded-full bg-accent shrink-0" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
+
         </div>
       </section>
 
