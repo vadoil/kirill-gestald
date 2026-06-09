@@ -559,7 +559,7 @@ function Index() {
       </section>
 
       {/* FAQ */}
-      <SectionHeading roman="V" kicker="Частые вопросы" />
+      <SectionHeading roman="VI" kicker="Частые вопросы" />
       <section id="faq" className="pb-28 md:pb-40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-12 gap-10">
           <h2 className="lg:col-span-5 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02]">
