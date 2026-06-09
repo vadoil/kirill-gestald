@@ -138,7 +138,7 @@ export function QuizSection() {
   };
 
   const restart = () => {
-    setStep(0);
+    setStep(1);
     setScores({ anxiety: 0, burnout: 0, relations: 0, self: 0 });
     setSent(false);
     setForm({ name: "", contact: "" });
