@@ -110,7 +110,7 @@ const RESULTS: Record<Cat, { title: string; summary: string; bullets: string[] }
 };
 
 export function QuizSection() {
-  const [step, setStep] = useState(0); // 0 = intro, 1..N = questions, N+1 = result
+  const [step, setStep] = useState(1); // 1..N = questions, N+1 = result
   const [scores, setScores] = useState<Record<Cat, number>>({
     anxiety: 0,
     burnout: 0,
