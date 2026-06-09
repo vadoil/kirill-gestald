@@ -308,7 +308,7 @@ function Index() {
               <Button
                 asChild
                 size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 rounded-full h-12 px-7 text-sm"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-12 px-7 text-sm"
               >
                 <a href="#contact">
                   Записаться на консультацию
@@ -672,7 +672,7 @@ function Index() {
             <Button
               type="submit"
               size="lg"
-              className="w-full h-13 py-4 rounded-full bg-foreground text-background hover:bg-foreground/90 mt-4"
+              className="w-full h-13 py-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
             >
               Отправить заявку
               <ArrowUpRight className="size-4 ml-1" />
