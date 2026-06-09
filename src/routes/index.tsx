@@ -23,6 +23,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import heroAsset from "../assets/kirill-hero.png.asset.json";
+import { QuizSection } from "@/components/QuizSection";
 
 export const Route = createFileRoute("/")({
   head: () => {
@@ -101,6 +102,7 @@ const nav = [
   { href: "#about", label: "О подходе" },
   { href: "#topics", label: "Запросы" },
   { href: "#how", label: "Встречи" },
+  { href: "#quiz", label: "Тест · −20%" },
   { href: "#price", label: "Стоимость" },
   { href: "#faq", label: "Вопросы" },
 ];
@@ -494,8 +496,12 @@ function Index() {
         </div>
       </section>
 
+      {/* QUIZ */}
+      <SectionHeading roman="IV" kicker="Короткий опрос" />
+      <QuizSection />
+
       {/* PRICE */}
-      <SectionHeading roman="IV" kicker="Стоимость" />
+      <SectionHeading roman="V" kicker="Стоимость" />
       <section id="price" className="pb-28 md:pb-40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02] max-w-3xl mb-14">
@@ -554,7 +560,7 @@ function Index() {
       </section>
 
       {/* FAQ */}
-      <SectionHeading roman="V" kicker="Частые вопросы" />
+      <SectionHeading roman="VI" kicker="Частые вопросы" />
       <section id="faq" className="pb-28 md:pb-40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-12 gap-10">
           <h2 className="lg:col-span-5 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02]">
@@ -583,7 +589,7 @@ function Index() {
       </section>
 
       {/* CONTACT */}
-      <SectionHeading roman="VI" kicker="Записаться" dark />
+      <SectionHeading roman="VII" kicker="Записаться" dark />
       <section id="contact" className="bg-primary text-primary-foreground pb-28 md:pb-36">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
