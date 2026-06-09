@@ -596,9 +596,8 @@ function Index() {
 
             <div className="space-y-1 mb-10 border-t border-primary-foreground/15">
               {[
-                { Icon: MessageCircle, label: "Telegram", value: "@kirill_psy", href: "https://t.me/" },
-                { Icon: Send, label: "WhatsApp", value: "напишите в чате", href: "https://wa.me/" },
-                { Icon: Phone, label: "Телефон", value: "+7 (000) 000-00-00", href: "tel:+70000000000" },
+                { Icon: Phone, label: "Телефон", value: "+7 960 835-09-45", href: "tel:+79608350945" },
+                { Icon: MessageCircle, label: "MAX", value: "+7 960 835-09-45", href: "https://max.ru/+79608350945" },
                 { Icon: MapPin, label: "Тольятти", value: "кабинет и онлайн" },
               ].map(({ Icon, label, value, href }) => {
                 const Inner = (
