@@ -64,7 +64,7 @@ export const Route = createFileRoute("/")({
               "Частная практика гештальт-психолога в Тольятти. Очные и онлайн-консультации.",
             url: `${SITE}/`,
             image: ogImage,
-            priceRange: "3000–3500 ₽",
+            priceRange: "4000 ₽",
             areaServed: "Тольятти",
             address: {
               "@type": "PostalAddress",
@@ -514,14 +514,14 @@ function Index() {
                 title: "Индивидуальная консультация",
                 format: "Очно · Тольятти",
                 dur: "60 минут",
-                price: "3 500",
+                price: "4 000",
                 icon: HomeIcon,
               },
               {
                 title: "Онлайн-консультация",
                 format: "Видеоформат",
                 dur: "60 минут",
-                price: "3 000",
+                price: "4 000",
                 icon: Video,
               },
             ].map((p) => (
