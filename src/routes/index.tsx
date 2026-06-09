@@ -23,6 +23,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import heroAsset from "../assets/kirill-hero.png.asset.json";
+import { QuizSection } from "@/components/QuizSection";
 
 export const Route = createFileRoute("/")({
   head: () => {
