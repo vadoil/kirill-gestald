@@ -110,7 +110,7 @@ const RESULTS: Record<Cat, { title: string; summary: string; bullets: string[] }
 };
 
 export function QuizSection() {
-  const [step, setStep] = useState(0); // 0 = intro, 1..N = questions, N+1 = result
+  const [step, setStep] = useState(1); // 1..N = questions, N+1 = result
   const [scores, setScores] = useState<Record<Cat, number>>({
     anxiety: 0,
     burnout: 0,
@@ -121,7 +121,7 @@ export function QuizSection() {
   const [sent, setSent] = useState(false);
 
   const total = QUESTIONS.length;
-  const isIntro = step === 0;
+  const isIntro = false;
   const isResult = step > total;
   const qIndex = step - 1;
 
@@ -138,7 +138,7 @@ export function QuizSection() {
   };
 
   const restart = () => {
-    setStep(0);
+    setStep(1);
     setScores({ anxiety: 0, burnout: 0, relations: 0, self: 0 });
     setSent(false);
     setForm({ name: "", contact: "" });
@@ -157,7 +157,7 @@ export function QuizSection() {
   const progress = isIntro ? 0 : isResult ? 100 : Math.round((qIndex / total) * 100);
 
   return (
-    <section id="quiz" className="relative pb-28 md:pb-40 pt-4">
+    <section id="quiz" className="relative pb-16 md:pb-24 pt-2">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-10 mb-14">
           <div className="lg:col-span-7">
@@ -185,7 +185,7 @@ export function QuizSection() {
             />
           </div>
 
-          <div className="p-8 md:p-14 min-h-[420px] flex flex-col">
+          <div className="p-6 md:p-10 flex flex-col">
             {isIntro && (
               <div className="max-w-2xl m-auto text-center">
                 <div className="font-display text-3xl md:text-4xl leading-tight mb-6">
