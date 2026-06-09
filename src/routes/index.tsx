@@ -495,8 +495,12 @@ function Index() {
         </div>
       </section>
 
+      {/* QUIZ */}
+      <SectionHeading roman="IV" kicker="Короткий опрос" />
+      <QuizSection />
+
       {/* PRICE */}
-      <SectionHeading roman="IV" kicker="Стоимость" />
+      <SectionHeading roman="V" kicker="Стоимость" />
       <section id="price" className="pb-28 md:pb-40">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02] max-w-3xl mb-14">
