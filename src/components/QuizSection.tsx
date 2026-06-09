@@ -198,7 +198,7 @@ export function QuizSection() {
                 <Button
                   size="lg"
                   onClick={() => setStep(1)}
-                  className="rounded-full h-12 px-8 bg-foreground text-background hover:bg-foreground/90"
+                  className="rounded-full h-12 px-8 bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   Начать опрос
                   <ArrowUpRight className="size-4 ml-1" />
