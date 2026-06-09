@@ -264,12 +264,22 @@ function Index() {
       </div>
 
       {/* HERO */}
-      <section id="top" className="relative pt-28 lg:pt-32">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-14 items-end pb-16 lg:pb-24">
-          {/* Left — type */}
-          <div className="lg:col-span-7 relative">
-            <div className="animate-fade-up flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-muted-foreground mb-8">
-              <span className="h-px w-12 bg-foreground/30" />
+      <section id="top" className="relative min-h-[100svh] flex items-end overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 -z-10">
+          <img
+            src={heroAsset.url}
+            alt="Кирилл Чебруков — гештальт-психолог"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/20 to-transparent" />
+        </div>
+
+        <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-40 pb-16 lg:pb-24">
+          <div className="max-w-3xl">
+            <div className="animate-fade-up flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-foreground/70 mb-8">
+              <span className="h-px w-12 bg-foreground/40" />
               Гештальт-психолог
               <span className="text-foreground/30">/</span>
               Тольятти &amp; онлайн
@@ -285,19 +295,11 @@ function Index() {
               и быть собой.
             </h1>
 
-            <div className="animate-fade-up-d2 mt-10 grid sm:grid-cols-[1fr_auto] gap-8 items-end">
-              <p className="text-base md:text-lg text-foreground/75 max-w-lg leading-relaxed">
-                Меня зовут Кирилл. Работаю со взрослыми людьми, которым важно
-                спокойно разобраться с тревогой, выгоранием и сложными периодами — без
-                советов, оценок и спешки.
-              </p>
-              <div className="hidden sm:flex flex-col items-end gap-1 text-right">
-                <span className="font-display text-3xl italic text-accent">~ 8 лет</span>
-                <span className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
-                  частной практики
-                </span>
-              </div>
-            </div>
+            <p className="animate-fade-up-d2 mt-10 text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed">
+              Меня зовут Кирилл. Работаю со взрослыми людьми, которым важно
+              спокойно разобраться с тревогой, выгоранием и сложными периодами —
+              без советов, оценок и спешки.
+            </p>
 
             <div className="animate-fade-up-d3 mt-10 flex flex-wrap gap-3">
               <Button
@@ -314,39 +316,16 @@ function Index() {
                 asChild
                 size="lg"
                 variant="ghost"
-                className="rounded-full h-12 px-7 text-sm hover:bg-foreground/5"
+                className="rounded-full h-12 px-7 text-sm hover:bg-foreground/10 backdrop-blur"
               >
                 <a href="#about">О подходе</a>
               </Button>
             </div>
           </div>
-
-          {/* Right — portrait */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2px] grain">
-              <img
-                src={heroAsset.url}
-                alt="Кирилл Чебруков — гештальт-психолог, портрет в кабинете"
-                className="absolute inset-0 h-full w-full object-cover scale-105 animate-fade-up"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-background">
-                <div className="text-[10px] uppercase tracking-[0.35em] text-background/80">
-                  Кирилл Чебруков
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.35em] text-background/80">
-                  №&nbsp;01
-                </div>
-              </div>
-            </div>
-            <div className="absolute -left-4 -top-4 hidden md:block font-display italic text-7xl text-accent/20 select-none">
-              k.
-            </div>
-          </div>
         </div>
 
         {/* Marquee strip */}
-        <div className="border-y border-border/60 bg-secondary/40 overflow-hidden">
+        <div className="absolute bottom-0 inset-x-0 border-t border-border/60 bg-background/70 backdrop-blur-md overflow-hidden">
           <div className="mx-auto max-w-[1400px] px-6 lg:px-12 py-4 flex flex-wrap items-center gap-x-10 gap-y-2 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
             <span className="flex items-center gap-2"><Lock className="size-3.5" /> Конфиденциально</span>
             <span className="text-foreground/20">●</span>
@@ -360,6 +339,7 @@ function Index() {
           </div>
         </div>
       </section>
+
 
       {/* ABOUT */}
       <SectionHeading roman="I" kicker="О подходе" />
