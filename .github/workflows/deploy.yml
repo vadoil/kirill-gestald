@@ -1,0 +1,48 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install deps
+        run: bun install --frozen-lockfile
+
+      - name: Build (static prerender)
+        env:
+          BUILD_TARGET: static
+        run: bun run build
+
+      - name: Locate static output
+        id: out
+        run: |
+          if [ -d ".output/public" ]; then
+            echo "dir=.output/public" >> $GITHUB_OUTPUT
+          elif [ -d "dist/client" ]; then
+            echo "dir=dist/client" >> $GITHUB_OUTPUT
+          elif [ -d "dist" ]; then
+            echo "dir=dist" >> $GITHUB_OUTPUT
+          else
+            echo "Static output not found"; ls -la; exit 1
+          fi
+
+      - name: Upload to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "${{ steps.out.outputs.dir }}/*"
+          target: "/var/www/chebrukov/dist/"
+          strip_components: 2
+          rm: true
