@@ -210,14 +210,24 @@ function Index() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const submit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.contact) {
       toast.error("Пожалуйста, оставьте имя и контакт");
       return;
     }
-    toast.success("Спасибо. Я свяжусь с вами в течение дня.");
-    setForm({ name: "", contact: "", message: "" });
+    setSubmitting(true);
+    try {
+      const { sendLead } = await import("@/lib/lead.functions");
+      await sendLead({ data: { source: "Контактная форма", name: form.name, contact: form.contact, message: form.message } });
+      toast.success("Спасибо. Я свяжусь с вами в течение дня.");
+      setForm({ name: "", contact: "", message: "" });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Не удалось отправить заявку");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
