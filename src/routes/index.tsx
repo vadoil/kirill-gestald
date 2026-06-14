@@ -210,14 +210,24 @@ function Index() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const submit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.contact) {
       toast.error("Пожалуйста, оставьте имя и контакт");
       return;
     }
-    toast.success("Спасибо. Я свяжусь с вами в течение дня.");
-    setForm({ name: "", contact: "", message: "" });
+    setSubmitting(true);
+    try {
+      const { sendLead } = await import("@/lib/lead.functions");
+      await sendLead({ data: { source: "Контактная форма", name: form.name, contact: form.contact, message: form.message } });
+      toast.success("Спасибо. Я свяжусь с вами в течение дня.");
+      setForm({ name: "", contact: "", message: "" });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Не удалось отправить заявку");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -279,7 +289,7 @@ function Index() {
         </div>
 
 
-        <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-40 pb-16 lg:pb-24">
+        <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-32 pb-10 lg:pb-16">
           <div className="max-w-3xl">
             <div className="animate-fade-up flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-foreground/70 mb-8">
               <span className="h-px w-12 bg-foreground/40" />
@@ -346,7 +356,7 @@ function Index() {
 
       {/* ABOUT */}
       <SectionHeading roman="I" kicker="О подходе" />
-      <section id="about" className="pb-28 md:pb-40">
+      <section id="about" className="pb-14 md:pb-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-12 gap-10 lg:gap-16">
           <div className="lg:col-span-5">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02]">
@@ -394,7 +404,7 @@ function Index() {
 
       {/* TOPICS */}
       <SectionHeading roman="II" kicker="Запросы" />
-      <section id="topics" className="pb-28 md:pb-40">
+      <section id="topics" className="pb-14 md:pb-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-10 mb-14">
             <h2 className="lg:col-span-7 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02]">
@@ -444,7 +454,7 @@ function Index() {
 
       {/* HOW */}
       <SectionHeading roman="III" kicker="Как проходят встречи" />
-      <section id="how" className="pb-28 md:pb-40">
+      <section id="how" className="pb-14 md:pb-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-10 mb-16">
             <h2 className="lg:col-span-7 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02]">
@@ -482,7 +492,7 @@ function Index() {
       </section>
 
       {/* PULL QUOTE */}
-      <section className="py-24 md:py-32 bg-secondary/40 border-y border-border/60">
+      <section className="py-14 md:py-20 bg-secondary/40 border-y border-border/60">
         <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
           <div className="font-display text-accent text-5xl mb-4 leading-none">“</div>
           <p className="font-display text-2xl md:text-4xl leading-[1.2] tracking-tight">
@@ -502,7 +512,7 @@ function Index() {
 
       {/* PRICE */}
       <SectionHeading roman="V" kicker="Стоимость" />
-      <section id="price" className="pb-28 md:pb-40">
+      <section id="price" className="pb-14 md:pb-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02] max-w-3xl mb-14">
             Прозрачно и <span className="italic text-accent">без скрытых условий</span>.
@@ -561,7 +571,7 @@ function Index() {
 
       {/* FAQ */}
       <SectionHeading roman="VI" kicker="Частые вопросы" />
-      <section id="faq" className="pb-28 md:pb-40">
+      <section id="faq" className="pb-14 md:pb-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-12 gap-10">
           <h2 className="lg:col-span-5 font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02]">
             То, о чём чаще всего <span className="italic text-accent">спрашивают</span>.
@@ -590,7 +600,7 @@ function Index() {
 
       {/* CONTACT */}
       <SectionHeading roman="VII" kicker="Записаться" dark />
-      <section id="contact" className="bg-primary text-primary-foreground pb-28 md:pb-36">
+      <section id="contact" className="bg-primary text-primary-foreground pb-14 md:pb-20">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.02] mb-8">
@@ -672,9 +682,10 @@ function Index() {
             <Button
               type="submit"
               size="lg"
+              disabled={submitting}
               className="w-full h-13 py-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
             >
-              Отправить заявку
+              {submitting ? "Отправляю…" : "Отправить заявку"}
               <ArrowUpRight className="size-4 ml-1" />
             </Button>
             <p className="text-xs text-muted-foreground text-center">
@@ -724,7 +735,7 @@ function SectionHeading({
     <div
       className={`${dark ? "bg-primary text-primary-foreground" : ""}`}
     >
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-12 pt-20 md:pt-28 pb-12 md:pb-14 flex items-baseline justify-between">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-12 pt-12 md:pt-16 pb-8 md:pb-10 flex items-baseline justify-between">
         <div className="flex items-baseline gap-6">
           <span className={`font-display italic text-3xl md:text-4xl ${dark ? "text-accent" : "text-accent"}`}>
             {roman}.

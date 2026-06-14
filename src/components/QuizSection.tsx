@@ -144,20 +144,37 @@ export function QuizSection() {
     setForm({ name: "", contact: "" });
   };
 
-  const submit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.contact) {
       toast.error("Оставьте имя и контакт — я свяжусь лично.");
       return;
     }
-    setSent(true);
-    toast.success("Заявка отправлена. Скидка 20% закреплена за вами.");
+    setSubmitting(true);
+    try {
+      const { sendLead } = await import("@/lib/lead.functions");
+      await sendLead({
+        data: {
+          source: "Квиз · скидка 20%",
+          name: form.name,
+          contact: form.contact,
+          quizResult: result.title,
+        },
+      });
+      setSent(true);
+      toast.success("Заявка отправлена. Скидка 20% закреплена за вами.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Не удалось отправить заявку");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const progress = isIntro ? 0 : isResult ? 100 : Math.round((qIndex / total) * 100);
 
   return (
-    <section id="quiz" className="relative pb-16 md:pb-24 pt-2">
+    <section id="quiz" className="relative pb-10 md:pb-14 pt-2">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-10 mb-14">
           <div className="lg:col-span-7">
@@ -317,9 +334,10 @@ export function QuizSection() {
                         <Button
                           type="submit"
                           size="lg"
+                          disabled={submitting}
                           className="w-full rounded-full h-12 bg-accent text-primary hover:bg-accent/90 mt-2"
                         >
-                          Получить скидку 20%
+                          {submitting ? "Отправляю…" : "Получить скидку 20%"}
                           <ArrowUpRight className="size-4 ml-1" />
                         </Button>
                         <p className="text-[11px] text-primary-foreground/55 text-center">
