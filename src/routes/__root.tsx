@@ -89,8 +89,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Gestalt Path is a premium personal website for a gestalt therapist, designed to generate leads for consultations." },
       { property: "og:description", content: "Gestalt Path is a premium personal website for a gestalt therapist, designed to generate leads for consultations." },
       { name: "twitter:description", content: "Gestalt Path is a premium personal website for a gestalt therapist, designed to generate leads for consultations." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6909a48f-c6f0-4fe4-8c4e-be276afebfcd/id-preview-618405b7--1327f843-2192-4c39-8bcb-c4b9c8e19e2e.lovable.app-1781022588936.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6909a48f-c6f0-4fe4-8c4e-be276afebfcd/id-preview-618405b7--1327f843-2192-4c39-8bcb-c4b9c8e19e2e.lovable.app-1781022588936.png" },
+      { property: "og:image", content: "https://chebrukov.ru/images/kirill-hero.png" },
+      { name: "twitter:image", content: "https://chebrukov.ru/images/kirill-hero.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
