@@ -20,7 +20,18 @@ export default defineConfig({
           preset: "static",
           prerender: {
             crawlLinks: true,
-            routes: ["/", "/sitemap.xml"],
+            routes: ["/"],
+          },
+        } as any,
+        vite: {
+          environments: {
+            ssr: {
+              build: {
+                rollupOptions: {
+                  input: "./src/server.ts",
+                },
+              },
+            },
           },
         } as any,
       }
