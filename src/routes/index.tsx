@@ -682,9 +682,10 @@ function Index() {
             <Button
               type="submit"
               size="lg"
+              disabled={submitting}
               className="w-full h-13 py-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 mt-4"
             >
-              Отправить заявку
+              {submitting ? "Отправляю…" : "Отправить заявку"}
               <ArrowUpRight className="size-4 ml-1" />
             </Button>
             <p className="text-xs text-muted-foreground text-center">
