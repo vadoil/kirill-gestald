@@ -32,6 +32,13 @@ export default defineConfig({
                 },
               },
             },
+            nitro: {
+              build: {
+                rollupOptions: {
+                  input: "./src/server.ts",
+                },
+              },
+            },
           },
         } as any,
       }
