@@ -334,9 +334,10 @@ export function QuizSection() {
                         <Button
                           type="submit"
                           size="lg"
+                          disabled={submitting}
                           className="w-full rounded-full h-12 bg-accent text-primary hover:bg-accent/90 mt-2"
                         >
-                          Получить скидку 20%
+                          {submitting ? "Отправляю…" : "Получить скидку 20%"}
                           <ArrowUpRight className="size-4 ml-1" />
                         </Button>
                         <p className="text-[11px] text-primary-foreground/55 text-center">
