@@ -22,12 +22,12 @@ import {
   Home as HomeIcon,
   ArrowUpRight,
 } from "lucide-react";
-import heroAsset from "../assets/kirill-hero.png.asset.json";
+const heroAsset = { url: "/images/kirill-hero.png" };
 import { QuizSection } from "@/components/QuizSection";
 
 export const Route = createFileRoute("/")({
   head: () => {
-    const SITE = "https://gestalt-kindred-space.lovable.app";
+    const SITE = "https://chebrukov.ru";
     const ogImage = `${SITE}${heroAsset.url}`;
     return {
       meta: [
