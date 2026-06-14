@@ -23,6 +23,11 @@ jobs:
           BUILD_TARGET: static
         run: bun run build
 
+      - name: Export static HTML
+        env:
+          SITE_URL: https://chebrukov.ru
+        run: node scripts/export-static.mjs
+
       - name: Locate static output
         id: out
         run: |
