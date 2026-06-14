@@ -174,7 +174,7 @@ export function QuizSection() {
   const progress = isIntro ? 0 : isResult ? 100 : Math.round((qIndex / total) * 100);
 
   return (
-    <section id="quiz" className="relative pb-16 md:pb-24 pt-2">
+    <section id="quiz" className="relative pb-10 md:pb-14 pt-2">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-10 mb-14">
           <div className="lg:col-span-7">
