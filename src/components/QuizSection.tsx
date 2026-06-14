@@ -144,14 +144,31 @@ export function QuizSection() {
     setForm({ name: "", contact: "" });
   };
 
-  const submit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.contact) {
       toast.error("Оставьте имя и контакт — я свяжусь лично.");
       return;
     }
-    setSent(true);
-    toast.success("Заявка отправлена. Скидка 20% закреплена за вами.");
+    setSubmitting(true);
+    try {
+      const { sendLead } = await import("@/lib/lead.functions");
+      await sendLead({
+        data: {
+          source: "Квиз · скидка 20%",
+          name: form.name,
+          contact: form.contact,
+          quizResult: result.title,
+        },
+      });
+      setSent(true);
+      toast.success("Заявка отправлена. Скидка 20% закреплена за вами.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Не удалось отправить заявку");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const progress = isIntro ? 0 : isResult ? 100 : Math.round((qIndex / total) * 100);
