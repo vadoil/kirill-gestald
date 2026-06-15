@@ -276,42 +276,45 @@ function Index() {
       </div>
 
       {/* HERO */}
-      <section id="top" className="relative isolate min-h-[100svh] flex items-end overflow-hidden">
+      <section id="top" className="relative isolate min-h-[78svh] md:min-h-[100svh] flex items-end overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroAsset.url}
             alt="Кирилл Чебруков — гештальт-психолог"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover object-[85%_top] md:object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background/85" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/75 via-background/25 to-transparent" />
+          {/* Mobile: лёгкое затемнение снизу, чтобы лицо было видно */}
+          <div className="absolute inset-0 md:hidden bg-gradient-to-b from-transparent via-background/10 to-background/90" />
+          {/* Desktop: затемнение слева под текст */}
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background/85" />
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/75 via-background/25 to-transparent" />
         </div>
 
 
-        <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-32 pb-10 lg:pb-16">
+        <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-20 md:pt-32 pb-8 md:pb-10 lg:pb-16">
           <div className="max-w-3xl">
-            <div className="animate-fade-up flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-foreground/70 mb-8">
+            <div className="animate-fade-up flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-foreground/70 mb-6 md:mb-8">
               <span className="h-px w-12 bg-foreground/40" />
               Гештальт-психолог
               <span className="text-foreground/30">/</span>
               Тольятти &amp; онлайн
             </div>
 
-            <h1 className="animate-fade-up-d1 font-display text-[clamp(2.6rem,7vw,6.5rem)] leading-[0.98] tracking-tight">
-              Пространство,
+            <h1 className="animate-fade-up-d1 font-display text-[clamp(2.4rem,7vw,6.5rem)] leading-[1.02] tracking-tight">
+              Заметить себя.
               <br />
-              где можно
+              Восстановить
               <br />
-              <span className="italic font-normal text-[color:var(--accent)]">остановиться&nbsp;—</span>
+              <span className="italic font-normal text-[color:var(--accent)]">контакт&nbsp;—</span>
               <br />
-              и быть собой.
+              с собой и жизнью.
             </h1>
 
-            <p className="animate-fade-up-d2 mt-10 text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed">
-              Меня зовут Кирилл. Работаю со взрослыми людьми, которым важно
-              спокойно разобраться с тревогой, выгоранием и сложными периодами —
-              без советов, оценок и спешки.
+            <p className="animate-fade-up-d2 mt-8 md:mt-10 text-base md:text-lg text-foreground/80 max-w-xl leading-relaxed">
+              Гештальт-терапия про «здесь и сейчас»: вернуть себе чувства,
+              опору и выбор. Работаю со взрослыми — тревога, выгорание,
+              отношения, сложные периоды. Без советов, оценок и спешки.
             </p>
 
             <div className="animate-fade-up-d3 mt-10 flex flex-wrap gap-3">
