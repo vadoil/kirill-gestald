@@ -82,6 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Кирилл Чебруков · Гештальт-психолог" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "ru_RU" },
+      { httpEquiv: "refresh", content: "0;url=https://chebrukov.ru" },
       { name: "twitter:card", content: "summary_large_image" },
       { title: "Кирилл" },
       { property: "og:title", content: "Кирилл" },
