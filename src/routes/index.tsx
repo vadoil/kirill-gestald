@@ -244,8 +244,10 @@ function Index() {
       >
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 flex items-center justify-between">
           <a href="#top" className="flex items-baseline gap-3">
-            <span className="font-display text-xl tracking-tight">Кирилл&nbsp;Чебруков</span>
-            <span className="hidden sm:inline text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            <span className={`font-display text-xl tracking-tight ${scrolled ? "" : "text-white md:text-foreground"}`}>
+              Кирилл&nbsp;Чебруков
+            </span>
+            <span className={`hidden sm:inline text-[10px] uppercase tracking-[0.3em] ${scrolled ? "text-muted-foreground" : "text-white/70 md:text-muted-foreground"}`}>
               гештальт · Тольятти
             </span>
           </a>
@@ -258,10 +260,14 @@ function Index() {
           </nav>
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 text-[13px] border border-foreground/30 hover:border-foreground px-4 py-2 rounded-full transition-colors"
+            className={`group inline-flex items-center gap-2 text-[13px] px-4 py-2 rounded-full transition-colors ${
+              scrolled
+                ? "border border-foreground/30 hover:border-foreground"
+                : "text-white border border-white/40 hover:border-white hover:bg-white/10 md:text-foreground md:border-foreground/30 md:hover:border-foreground md:hover:bg-transparent"
+            }`}
           >
             Записаться
-            <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className={`size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${scrolled ? "" : "text-white md:text-foreground"}`} />
           </a>
         </div>
       </header>
@@ -296,12 +302,20 @@ function Index() {
             className="w-full h-[52svh] object-cover object-[85%_top]"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+          <div className="absolute bottom-6 left-6 z-10 flex flex-col gap-2.5">
+            <span className="inline-block px-3.5 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/90 border border-white/30 rounded-full backdrop-blur-sm bg-black/25">
+              Гештальт-психолог
+            </span>
+            <span className="inline-block px-3.5 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/90 border border-white/30 rounded-full backdrop-blur-sm bg-black/25">
+              Тольятти &amp; онлайн
+            </span>
+          </div>
         </div>
 
         {/* Content */}
         <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-8 md:pt-32 pb-8 md:pb-10 lg:pb-16">
           <div className="max-w-3xl">
-            <div className="animate-fade-up flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-foreground/70 mb-6 md:mb-8">
+            <div className="hidden md:flex animate-fade-up items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-foreground/70 mb-6 md:mb-8">
               <span className="h-px w-12 bg-foreground/40" />
               Гештальт-психолог
               <span className="text-foreground/30">/</span>
