@@ -260,10 +260,14 @@ function Index() {
           </nav>
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 text-[13px] border border-foreground/30 hover:border-foreground px-4 py-2 rounded-full transition-colors"
+            className={`group inline-flex items-center gap-2 text-[13px] px-4 py-2 rounded-full transition-colors ${
+              scrolled
+                ? "border border-foreground/30 hover:border-foreground"
+                : "text-white border border-white/40 hover:border-white hover:bg-white/10 md:text-foreground md:border-foreground/30 md:hover:border-foreground md:hover:bg-transparent"
+            }`}
           >
             Записаться
-            <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className={`size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${scrolled ? "" : "text-white md:text-foreground"}`} />
           </a>
         </div>
       </header>
