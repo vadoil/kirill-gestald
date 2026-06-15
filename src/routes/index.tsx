@@ -276,23 +276,30 @@ function Index() {
       </div>
 
       {/* HERO */}
-      <section id="top" className="relative isolate min-h-[78svh] md:min-h-[100svh] flex items-end overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 z-0">
+      <section id="top" className="relative isolate flex flex-col md:items-end md:min-h-[100svh] overflow-hidden">
+        {/* Background — desktop only */}
+        <div className="absolute inset-0 z-0 hidden md:block">
           <img
             src={heroAsset.url}
             alt="Кирилл Чебруков — гештальт-психолог"
-            className="absolute inset-0 h-full w-full object-cover object-[85%_top] md:object-center"
+            className="absolute inset-0 h-full w-full object-cover object-center"
           />
-          {/* Mobile: лёгкое затемнение снизу, чтобы лицо было видно */}
-          <div className="absolute inset-0 md:hidden bg-gradient-to-b from-transparent via-background/10 to-background/90" />
-          {/* Desktop: затемнение слева под текст */}
-          <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background/85" />
-          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-background/75 via-background/25 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/10 to-background/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/75 via-background/25 to-transparent" />
         </div>
 
+        {/* Mobile photo */}
+        <div className="relative w-full md:hidden">
+          <img
+            src={heroAsset.url}
+            alt="Кирилл Чебруков — гештальт-психолог"
+            className="w-full h-[52svh] object-cover object-[85%_top]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+        </div>
 
-        <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-20 md:pt-32 pb-8 md:pb-10 lg:pb-16">
+        {/* Content */}
+        <div className="relative mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-8 md:pt-32 pb-8 md:pb-10 lg:pb-16">
           <div className="max-w-3xl">
             <div className="animate-fade-up flex items-center gap-4 text-[11px] uppercase tracking-[0.35em] text-foreground/70 mb-6 md:mb-8">
               <span className="h-px w-12 bg-foreground/40" />
@@ -341,8 +348,33 @@ function Index() {
         </div>
 
         {/* Marquee strip */}
-        <div className="absolute bottom-0 inset-x-0 border-t border-border/60 bg-background/70 backdrop-blur-md overflow-hidden">
-          <div className="mx-auto max-w-[1400px] px-6 lg:px-12 py-4 flex flex-wrap items-center gap-x-10 gap-y-2 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
+        <div className="relative md:absolute md:bottom-0 md:inset-x-0 border-t border-border/60 bg-background/70 backdrop-blur-md overflow-hidden">
+          {/* Mobile marquee */}
+          <div className="md:hidden flex whitespace-nowrap animate-marquee py-4 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
+            <span className="flex items-center gap-2 mx-4"><Lock className="size-3.5 shrink-0" /> Конфиденциально</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            <span className="flex items-center gap-2 mx-4"><Video className="size-3.5 shrink-0" /> Очно и онлайн</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            <span className="mx-4">Сессия 60 минут</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            <span className="mx-4">Без оценок и советов</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            <span className="mx-4">Этика и супервизия</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            {/* duplicate for seamless loop */}
+            <span className="flex items-center gap-2 mx-4"><Lock className="size-3.5 shrink-0" /> Конфиденциально</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            <span className="flex items-center gap-2 mx-4"><Video className="size-3.5 shrink-0" /> Очно и онлайн</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            <span className="mx-4">Сессия 60 минут</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            <span className="mx-4">Без оценок и советов</span>
+            <span className="mx-3 text-foreground/20">●</span>
+            <span className="mx-4">Этика и супервизия</span>
+            <span className="mx-3 text-foreground/20">●</span>
+          </div>
+          {/* Desktop static */}
+          <div className="hidden md:flex mx-auto max-w-[1400px] px-6 lg:px-12 py-4 flex-wrap items-center gap-x-10 gap-y-2 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
             <span className="flex items-center gap-2"><Lock className="size-3.5" /> Конфиденциально</span>
             <span className="text-foreground/20">●</span>
             <span className="flex items-center gap-2"><Video className="size-3.5" /> Очно и онлайн</span>
