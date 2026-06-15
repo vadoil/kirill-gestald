@@ -244,8 +244,10 @@ function Index() {
       >
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12 flex items-center justify-between">
           <a href="#top" className="flex items-baseline gap-3">
-            <span className="font-display text-xl tracking-tight">Кирилл&nbsp;Чебруков</span>
-            <span className="hidden sm:inline text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            <span className={`font-display text-xl tracking-tight ${scrolled ? "" : "text-white md:text-foreground"}`}>
+              Кирилл&nbsp;Чебруков
+            </span>
+            <span className={`hidden sm:inline text-[10px] uppercase tracking-[0.3em] ${scrolled ? "text-muted-foreground" : "text-white/70 md:text-muted-foreground"}`}>
               гештальт · Тольятти
             </span>
           </a>
