@@ -104,6 +104,14 @@
 .animate-fade-up-d2 { animation: fade-up 0.9s ease-out 0.3s both; }
 .animate-fade-up-d3 { animation: fade-up 0.9s ease-out 0.45s both; }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 18s linear infinite;
+}
+
 :root {
   --radius: 0.5rem;
   /* Warm editorial natural palette */
